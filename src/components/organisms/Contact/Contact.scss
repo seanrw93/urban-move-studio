@@ -1,0 +1,289 @@
+@use '../../../styles/variables' as *;
+
+.contact {
+  position: relative;
+  background-color: $color-light-bg-primary;
+  overflow: hidden;
+
+  // Tighter section padding
+  &.section {
+    padding-top: $space-16;
+    padding-bottom: $space-16;
+
+    @include respond-md {
+      padding-top: $space-20;
+      padding-bottom: $space-20;
+    }
+
+    @include respond-lg {
+      padding-top: $space-24;
+      padding-bottom: $space-24;
+    }
+  }
+
+  // Grain overlay — same SVG noise as hero
+  &__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+  }
+
+  // All direct children of .contact sit above the grain
+  > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    // Mobile divider
+    @media (max-width: #{$bp-md - 1px}) {
+      > .contact__info {
+        padding-bottom: $space-10;
+        margin-bottom: $space-10;
+        border-bottom: 1px solid $color-light-border;
+      }
+    }
+
+    @include respond-md {
+      grid-template-columns: 1fr 1fr;
+      gap: $space-16;
+      align-items: start;
+    }
+
+    @include respond-lg {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+
+  &__intro {
+    font-family: $font-body;
+    font-size: 15px;
+    line-height: 1.65;
+    color: $color-light-text-secondary;
+    margin-bottom: $space-10;
+  }
+
+  // Accent-line wrapper around the info list
+  &__info-block {
+    padding-left: $space-5;
+    border-left: 2px solid $color-accent;
+  }
+
+  &__info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__info-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+  }
+
+  // Label class kept for BEM completeness but hidden — replaced by icons
+  &__info-label {
+    display: none;
+  }
+
+  &__info-value {
+    font-family: $font-body;
+    font-size: 16px;
+    font-weight: $fw-medium;
+    color: $color-light-text-primary;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    // Underline effect on hover for links
+    &[href^="mailto:"],
+    &[href^="https://instagram"] {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 0;
+        height: 1px;
+        background-color: $color-accent;
+        transition: width $transition-base;
+      }
+
+      &:hover {
+        color: $color-accent;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    // Address: just colour change, no underline
+    &[href^="https://maps"] {
+      &:hover {
+        color: $color-accent;
+      }
+    }
+  }
+
+  // Form panel
+  &__form-wrap {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-top: 2px solid $color-accent;
+    border-radius: $radius-lg;
+    padding: $space-8;
+
+    @include respond-md {
+      padding: $space-10;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-light-text-secondary;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    background-color: $color-bg-primary;
+    border: 1px solid $color-light-border;
+    border-left: 2px solid $color-light-border;
+    border-radius: $radius-md;
+    padding: $space-4 $space-4;
+    font-family: $font-body;
+    font-size: 15px;
+    color: $color-light-text-primary;
+    outline: none;
+    transition: border-color $transition-fast, background-color $transition-fast;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: $color-light-text-muted;
+      letter-spacing: 0.03em;
+    }
+
+    &:focus {
+      border-left-color: $color-accent;
+      background-color: #222;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__error {
+    font-family: $font-body;
+    font-size: 13px;
+    color: #e05555;
+  }
+
+  // Submit button — custom, not using Button atom
+  &__submit-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: $space-2;
+  }
+
+  &__submit {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: $space-3 $space-10;
+    background-color: $color-accent;
+    color: $color-bg-primary;
+    border: 2px solid $color-accent;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: background-color $transition-base,
+                color $transition-base,
+                border-color $transition-base,
+                box-shadow $transition-base,
+                transform $transition-fast;
+
+    &:hover:not(:disabled) {
+      background-color: transparent;
+      color: $color-accent;
+      border-color: $color-accent;
+      box-shadow: 0 0 20px rgba($color-accent, 0.2);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  // Success state
+  &__success {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    padding: $space-10 0;
+    text-align: center;
+  }
+
+  &__success-title {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: clamp(24px, 3vw, 36px);
+    text-transform: uppercase;
+    color: $color-accent;
+    letter-spacing: 0.04em;
+  }
+
+  &__success-body {
+    font-family: $font-body;
+    font-size: 15px;
+    line-height: 1.65;
+    color: $color-light-text-secondary;
+  }
+}

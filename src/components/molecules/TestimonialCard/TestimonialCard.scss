@@ -1,0 +1,69 @@
+@use '../../../styles/variables' as *;
+
+.testimonial-card {
+  background-color: $color-light-bg-card;
+  border: 1px solid $color-light-border;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  min-width: 300px;
+  transition: border-color $transition-base, transform $transition-base, box-shadow $transition-base;
+
+  @include respond-md {
+    min-width: unset;
+  }
+
+  &:hover {
+    border-color: rgba($color-accent, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 24px rgba($color-light-text-primary, 0.06);
+  }
+
+  &__quote {
+    flex: 1;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: 15px;
+    line-height: 1.7;
+    color: $color-light-text-primary;
+    font-style: italic;
+
+    &::before {
+      content: '\201C';
+      font-family: $font-display;
+      font-size: 40px;
+      color: $color-accent;
+      line-height: 0;
+      vertical-align: -0.4em;
+      margin-right: $space-1;
+    }
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding-top: $space-4;
+    border-top: 1px solid $color-light-border;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color-light-text-primary;
+  }
+
+  &__role {
+    font-family: $font-body;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-light-text-muted;
+  }
+}

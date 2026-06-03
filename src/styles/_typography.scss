@@ -1,0 +1,101 @@
+@use 'variables' as *;
+
+.display-xl {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(64px, 12vw, 160px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(40px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.display-md {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.display-sm {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: clamp(20px, 3vw, 36px);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.body-lg {
+  font-family: $font-body;
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.6;
+}
+
+.body-md {
+  font-family: $font-body;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.body-sm {
+  font-family: $font-body;
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.label {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+// Scroll reveal animation
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.2s; }
+.reveal--delay-3 { transition-delay: 0.3s; }
+.reveal--delay-4 { transition-delay: 0.4s; }

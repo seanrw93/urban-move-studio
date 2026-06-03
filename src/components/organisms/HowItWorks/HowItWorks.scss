@@ -1,0 +1,16 @@
+@use '../../../styles/variables' as *;
+
+.how-it-works {
+  background-color: $color-light-bg-secondary;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-10;
+
+    @include respond-md {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-8;
+    }
+  }
+}

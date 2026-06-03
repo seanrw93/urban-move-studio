@@ -1,0 +1,178 @@
+@use '../../../styles/variables' as *;
+
+.hero {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  // Image reel — all slides stacked, crossfade between them
+  &__reel {
+    position: absolute;
+    inset: 0;
+    background-color: $color-bg-secondary;
+  }
+
+  &__reel-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 1s ease, transform 4s ease;
+    will-change: opacity, transform;
+
+    &--active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &__reel-slide-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: $color-overlay;
+    z-index: 1;
+  }
+
+  &__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: $space-12;
+    padding-top: calc(#{$navbar-height} + #{$space-8});
+    padding-bottom: $space-8;
+    width: 100%;
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+    max-width: 820px;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-accent;
+  }
+
+  &__headline {
+    font-family: $font-display;
+    font-weight: $fw-black;
+    font-size: clamp(48px, 8vw, 110px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__headline-line {
+    display: block;
+    color: $color-text-primary;
+
+    &--accent {
+      color: $color-accent;
+    }
+  }
+
+  &__subheading {
+    font-family: $font-body;
+    font-size: clamp(14px, 1.5vw, 17px);
+    color: rgba($color-text-primary, 0.7);
+    letter-spacing: 0.03em;
+    max-width: 420px;
+  }
+
+  &__cta {
+    margin-top: $space-4;
+  }
+
+  // Indicator dots
+  &__reel-dots {
+    display: flex;
+    gap: $space-3;
+    align-items: center;
+  }
+
+  &__reel-dot {
+    width: 20px;
+    height: 2px;
+    background-color: rgba($color-text-primary, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color $transition-base, width $transition-base;
+
+    &--active {
+      width: 40px;
+      background-color: $color-accent;
+    }
+
+    &:hover:not(&--active) {
+      background-color: rgba($color-text-primary, 0.6);
+    }
+  }
+
+  &__scroll-hint {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+    animation: scroll-bob 2s ease-in-out infinite;
+  }
+
+  &__scroll-hint-line {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background-color: rgba($color-text-primary, 0.35);
+  }
+
+  &__scroll-hint-text {
+    font-family: $font-body;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba($color-text-primary, 0.4);
+  }
+}
+
+@keyframes scroll-bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}

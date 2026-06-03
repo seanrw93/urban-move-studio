@@ -1,0 +1,27 @@
+@use '../../../styles/variables' as *;
+
+.pricing {
+  background-color: $color-light-bg-primary;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-5;
+
+    @include respond-md {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-6;
+      align-items: stretch;
+
+      // reveal wrapper divs must also stretch
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pricing-card {
+        flex: 1;
+      }
+    }
+  }
+}

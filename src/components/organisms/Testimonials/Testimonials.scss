@@ -1,0 +1,25 @@
+@use '../../../styles/variables' as *;
+
+.testimonials {
+  background-color: $color-light-bg-secondary;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: $space-5;
+    overflow-x: auto;
+    padding-bottom: $space-3;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include respond-md {
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+      padding-bottom: 0;
+    }
+  }
+}

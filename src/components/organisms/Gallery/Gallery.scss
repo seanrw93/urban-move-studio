@@ -1,0 +1,321 @@
+@use '../../../styles/variables' as *;
+
+.gallery {
+  background-color: $color-light-bg-primary;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-5;
+  }
+
+  &__header-left {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__ig-link {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: $fw-medium;
+    letter-spacing: 0.06em;
+    color: $color-light-text-secondary;
+    transition: color $transition-base;
+    padding-bottom: $space-2;
+
+    &:hover {
+      color: $color-accent;
+
+      .gallery__ig-icon::before,
+      .gallery__ig-icon::after {
+        border-color: $color-accent;
+      }
+
+      .gallery__ig-icon-dot {
+        background-color: $color-accent;
+      }
+    }
+  }
+
+  &__ig-icon {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    // Instagram icon drawn with CSS borders
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1.5px solid $color-light-text-secondary;
+      border-radius: 5px;
+      transition: border-color $transition-base;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border: 1.5px solid $color-light-text-secondary;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: border-color $transition-base;
+    }
+  }
+
+  // Grid layout
+  // Desktop: 3 columns
+  // Row 1: [gif wide 2col] [gif portrait 1col tall 2rows]
+  // Row 2: [jpg landscape] [jpg landscape] [cta tile]
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 240px;
+    gap: $space-3;
+
+    @include respond-md {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 280px;
+    }
+
+    @include respond-lg {
+      grid-auto-rows: 320px;
+      gap: $space-4;
+    }
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background-color: $color-light-bg-secondary;
+
+    &--wide {
+      grid-column: span 2;
+      grid-row: span 1;
+
+      @include respond-md {
+        grid-column: span 2;
+      }
+    }
+
+    &--tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    &--normal {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    &--cta {
+      grid-column: span 1;
+      grid-row: span 1;
+      background-color: $color-accent;
+      cursor: pointer;
+      transition: background-color $transition-base;
+
+      &:hover {
+        background-color: $color-accent-hover;
+      }
+    }
+
+    &:not(&--cta):hover {
+      .gallery__img {
+        transform: scale(1.04);
+      }
+
+      .gallery__overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color-bg-primary, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-3;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &__overlay-icon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid $color-accent;
+      border-radius: 9px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 11px;
+      height: 11px;
+      border: 2px solid $color-accent;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__overlay-text {
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-accent;
+  }
+
+  // CTA tile
+  &__cta-tile {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-3;
+    padding: $space-6;
+  }
+
+  &__cta-icon {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2.5px solid $color-bg-primary;
+      border-radius: 10px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      border: 2.5px solid $color-bg-primary;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__cta-title {
+    font-family: $font-display;
+    font-weight: $fw-black;
+    font-size: clamp(16px, 2vw, 22px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-bg-primary;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  &__cta-handle {
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.1em;
+    color: rgba($color-bg-primary, 0.7);
+    text-align: center;
+  }
+
+  // Footer link
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: $space-8;
+  }
+
+  &__footer-link {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-light-text-secondary;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-accent;
+
+      .gallery__footer-arrow::before {
+        background-color: $color-accent;
+        transform: scaleX(1.3);
+      }
+    }
+  }
+
+  &__footer-arrow {
+    display: inline-block;
+    position: relative;
+    width: 32px;
+    height: 1px;
+    overflow: visible;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color-light-text-secondary;
+      transform-origin: left;
+      transition: transform $transition-base, background-color $transition-base;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 7px;
+      height: 7px;
+      border-right: 1px solid currentColor;
+      border-top: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+  }
+}

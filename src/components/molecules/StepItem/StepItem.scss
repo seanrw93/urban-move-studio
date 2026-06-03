@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+
+.step-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-6;
+  align-items: flex-start;
+  padding-bottom: $space-10;
+  border-bottom: 1px solid $color-light-border;
+  position: relative;
+
+  @include respond-md {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  &__number {
+    // The large display number sits left of content on mobile, above on desktop
+  }
+
+  &__content {
+    padding-top: $space-4;
+
+    @include respond-md {
+      padding-top: 0;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: clamp(20px, 2.5vw, 28px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-light-text-primary;
+    margin-bottom: $space-3;
+  }
+
+  &__description {
+    font-family: $font-body;
+    font-size: 14px;
+    line-height: 1.7;
+    color: $color-light-text-secondary;
+    max-width: 280px;
+  }
+}

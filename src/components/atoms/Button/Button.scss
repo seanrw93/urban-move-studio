@@ -1,0 +1,85 @@
+@use '../../../styles/variables' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color $transition-base,
+              color $transition-base,
+              border-color $transition-base,
+              transform $transition-fast,
+              box-shadow $transition-base;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  // Variants
+  &--primary {
+    background-color: $color-accent;
+    color: $color-bg-primary;
+    border-color: $color-accent;
+
+    &:hover {
+      background-color: $color-accent-hover;
+      border-color: $color-accent-hover;
+      box-shadow: 0 0 24px rgba($color-accent, 0.35);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: $color-light-text-primary;
+    border-color: $color-light-border;
+
+    &:hover {
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: $color-accent;
+    border-color: transparent;
+
+    &:hover {
+      color: $color-accent-hover;
+    }
+  }
+
+  // Sizes
+  &--sm {
+    font-size: 12px;
+    padding: $space-2 $space-4;
+    letter-spacing: 0.1em;
+  }
+
+  &--md {
+    font-size: 14px;
+    padding: $space-3 $space-6;
+  }
+
+  &--lg {
+    font-size: 16px;
+    padding: $space-4 $space-10;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &__label {
+    position: relative;
+    z-index: 1;
+  }
+}

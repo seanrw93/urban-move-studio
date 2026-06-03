@@ -1,0 +1,54 @@
+@use '../../../styles/variables' as *;
+
+.nav-link {
+  display: inline-block;
+  font-family: $font-body;
+  font-size: 13px;
+  font-weight: $fw-medium;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-text-secondary;
+  transition: color $transition-base;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $color-accent;
+    transition: width $transition-base;
+  }
+
+  &:hover {
+    color: $color-text-primary;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &--overlay {
+    font-family: $font-display;
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: $fw-black;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-text-primary;
+    line-height: 1.05;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__text {
+    position: relative;
+  }
+}

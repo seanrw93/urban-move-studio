@@ -1,0 +1,93 @@
+// Dark palette — hero, navbar, modal
+$color-bg-primary: #1e1b18;
+$color-bg-secondary: #252220;
+$color-bg-card: #2e2b27;
+$color-bg-card-hover: #353129;
+$color-accent: #f5e642;
+$color-accent-hover: #e8d93a;
+$color-text-primary: #f0ede8;
+$color-text-secondary: #a09890;
+$color-text-muted: #706860;
+$color-border: #3d3a35;
+$color-overlay: rgba(20, 18, 14, 0.65);
+$color-modal-overlay: rgba(16, 14, 11, 0.88);
+
+// Content sections — same warm slate throughout
+$color-light-bg-primary: #1e1b18;
+$color-light-bg-secondary: #252220;
+$color-light-bg-card: #2e2b27;
+$color-light-bg-card-hover: #353129;
+$color-light-text-primary: #f0ede8;
+$color-light-text-secondary: #a09890;
+$color-light-text-muted: #706860;
+$color-light-border: #3d3a35;
+
+// Typography
+$font-display: 'Barlow Condensed', 'Impact', sans-serif;
+$font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+// Font weights
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+$fw-black: 900;
+
+// Spacing scale
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
+$space-20: 80px;
+$space-24: 96px;
+$space-32: 128px;
+
+// Breakpoints
+$bp-sm: 375px;
+$bp-md: 768px;
+$bp-lg: 1280px;
+$bp-xl: 1440px;
+
+// Mixins
+@mixin respond-md {
+  @media (min-width: #{$bp-md}) {
+    @content;
+  }
+}
+
+@mixin respond-lg {
+  @media (min-width: #{$bp-lg}) {
+    @content;
+  }
+}
+
+@mixin respond-xl {
+  @media (min-width: #{$bp-xl}) {
+    @content;
+  }
+}
+
+// Navbar height
+$navbar-height: 72px;
+
+// Border radius
+$radius-sm: 2px;
+$radius-md: 4px;
+$radius-lg: 8px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;
+$transition-slow: 0.4s ease;
+
+// Z-index
+$z-navbar: 100;
+$z-modal: 200;
+$z-modal-overlay: 199;

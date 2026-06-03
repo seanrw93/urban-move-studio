@@ -1,0 +1,16 @@
+@use '../../../styles/variables' as *;
+
+.step-number {
+  display: inline-flex;
+  align-items: flex-start;
+
+  &__value {
+    font-family: $font-display;
+    font-weight: $fw-black;
+    font-size: clamp(72px, 10vw, 120px);
+    line-height: 0.85;
+    color: $color-accent;
+    letter-spacing: -0.03em;
+    user-select: none;
+  }
+}

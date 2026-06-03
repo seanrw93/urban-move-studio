@@ -1,0 +1,66 @@
+@use 'variables' as *;
+@use 'reset';
+@use 'typography';
+
+// Utility
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $space-5;
+  padding-right: $space-5;
+
+  @include respond-md {
+    padding-left: $space-8;
+    padding-right: $space-8;
+  }
+
+  @include respond-lg {
+    padding-left: $space-12;
+    padding-right: $space-12;
+  }
+}
+
+.section {
+  padding-top: $space-20;
+  padding-bottom: $space-20;
+
+  @include respond-md {
+    padding-top: $space-24;
+    padding-bottom: $space-24;
+  }
+
+  @include respond-lg {
+    padding-top: $space-32;
+    padding-bottom: $space-32;
+  }
+}
+
+.section__header {
+  margin-bottom: $space-12;
+
+  @include respond-md {
+    margin-bottom: $space-16;
+  }
+}
+
+.section__label {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+.section__title {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: $color-light-text-primary;
+}

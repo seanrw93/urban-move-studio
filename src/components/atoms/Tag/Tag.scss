@@ -1,0 +1,23 @@
+@use '../../../styles/variables' as *;
+
+.tag {
+  display: inline-block;
+  font-family: $font-body;
+  font-size: 10px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: $space-1 $space-3;
+  border-radius: $radius-sm;
+
+  &--accent {
+    background-color: $color-accent;
+    color: $color-bg-primary;
+  }
+
+  &--muted {
+    background-color: $color-bg-card;
+    color: $color-text-secondary;
+    border: 1px solid $color-border;
+  }
+}
