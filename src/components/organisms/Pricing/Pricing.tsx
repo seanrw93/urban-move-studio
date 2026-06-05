@@ -5,6 +5,7 @@ import './Pricing.scss';
 const PACKAGES = [
   {
     title: 'Cours Découverte',
+    forfait: 'Cours Découverte — séance unique — 25€',
     price: '€25',
     description:
       'Un seul cours pour découvrir l\'ambiance du studio, la pédagogie de Sofia et les fondamentaux du hip-hop.',
@@ -18,6 +19,7 @@ const PACKAGES = [
   },
   {
     title: 'Forfait Mensuel',
+    forfait: 'Forfait Mensuel — 4 cours/mois — 80€/mois',
     price: '€80',
     priceNote: '/ mois',
     description:
@@ -33,6 +35,7 @@ const PACKAGES = [
   },
   {
     title: 'Forfait Semestriel',
+    forfait: 'Forfait Semestriel — 20 cours — 280€/semestre',
     price: '€280',
     priceNote: '/ semestre',
     description:
@@ -49,10 +52,10 @@ const PACKAGES = [
 ];
 
 interface PricingProps {
-  onBook: (packageName: string) => void;
+  onReserver: (forfait: string) => void;
 }
 
-export function Pricing({ onBook }: PricingProps) {
+export function Pricing({ onReserver }: PricingProps) {
   const sectionRef = useRevealAnimation<HTMLElement>();
 
   return (
@@ -65,10 +68,27 @@ export function Pricing({ onBook }: PricingProps) {
         <div className="pricing__grid">
           {PACKAGES.map((pkg, i) => (
             <div key={pkg.title} className={`reveal reveal--delay-${i + 1}`}>
-              <PricingCard {...pkg} onBook={onBook} />
+              <PricingCard
+                title={pkg.title}
+                forfaitSlug={pkg.forfait}
+                price={pkg.price}
+                priceNote={pkg.priceNote}
+                description={pkg.description}
+                features={pkg.features}
+                recommended={pkg.recommended}
+                onBook={onReserver}
+              />
             </div>
           ))}
         </div>
+        <p className="pricing__note reveal">
+          Règlement par virement bancaire, chèque ou espèces.
+          Paiement en 3 fois par chèque possible pour le forfait semestriel.
+          Cotisation annuelle&nbsp;: 20€ (adhésion obligatoire).
+        </p>
+        <p className="pricing__note pricing__note--small reveal">
+          Certificat médical de moins de 3 mois requis à l'inscription.
+        </p>
       </div>
     </section>
   );

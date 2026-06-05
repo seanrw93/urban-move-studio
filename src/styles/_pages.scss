@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+// Shared page-level layout used by PrestationsPage and InscriptionPage
+
+.page-header {
+  padding-top: calc(#{$navbar-height} + #{$space-16});
+  padding-bottom: $space-16;
+}
+
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-body;
+  font-size: 13px;
+  font-weight: $fw-medium;
+  letter-spacing: 0.06em;
+  color: $color-text-secondary;
+  text-decoration: none;
+  margin-bottom: $space-6;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.page-kicker {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+.page-heading {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(40px, 7vw, 80px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: $color-text-primary;
+  margin-bottom: $space-6;
+}
+
+.page-subheading {
+  font-family: $font-body;
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: $color-text-secondary;
+  line-height: 1.65;
+  max-width: 680px;
+}

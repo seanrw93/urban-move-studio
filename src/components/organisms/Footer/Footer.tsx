@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa';
 import './Footer.scss';
@@ -54,13 +55,15 @@ export function Footer() {
             <div className="footer__col">
               <p className="footer__col-title">Navigation</p>
               <ul className="footer__nav-list">
-                {['Cours', 'Tarifs', 'Réserver', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <a href={`#${item.toLowerCase()}`} className="footer__nav-link">
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/" className="footer__nav-link">Accueil</Link>
+                </li>
+                <li>
+                  <Link to="/prestations" className="footer__nav-link">Prestations</Link>
+                </li>
+                <li>
+                  <Link to="/inscription" className="footer__nav-link">Inscriptions</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -72,6 +75,17 @@ export function Footer() {
           </p>
           <p className="footer__legal">
             Cours collectifs de danse &bull; Puteaux, Hauts-de-Seine
+          </p>
+          <p className="footer__built">
+            Site réalisé par srw-dev —{' '}
+            <a
+              href="https://srwdev.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__srwdev"
+            >
+              srwdev.fr
+            </a>
           </p>
         </div>
       </div>

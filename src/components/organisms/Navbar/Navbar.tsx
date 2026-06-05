@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from '../../molecules/NavLink/NavLink';
+import { NavLink, Link } from 'react-router-dom';
+import { Button } from '../../atoms/Button/Button';
 import './Navbar.scss';
-
-const NAV_ITEMS = [
-  { label: 'Cours', href: '#how-it-works' },
-  { label: 'Tarifs', href: '#pricing' },
-  { label: 'Réserver', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
-];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,7 +15,9 @@ export function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
@@ -29,16 +25,44 @@ export function Navbar() {
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
-        <a href="#hero" className="navbar__logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}>
+        <Link to="/" className="navbar__logo" onClick={closeMenu}>
           Sofia Marchand
-        </a>
+        </Link>
 
         <nav className="navbar__nav" aria-label="Navigation principale">
-          {NAV_ITEMS.map((item) => (
-            <NavLink key={item.label} href={item.href}>
-              {item.label}
-            </NavLink>
-          ))}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `navbar__nav-link${isActive ? ' navbar__nav-link--active' : ''}`
+            }
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/prestations"
+            className={({ isActive }) =>
+              `navbar__nav-link${isActive ? ' navbar__nav-link--active' : ''}`
+            }
+          >
+            Prestations
+          </NavLink>
+          <NavLink
+            to="/inscription"
+            className={({ isActive }) =>
+              `navbar__nav-link${isActive ? ' navbar__nav-link--active' : ''}`
+            }
+          >
+            Tarifs &amp; Inscriptions
+          </NavLink>
+          <a href="/#contact" className="navbar__nav-link">
+            Contact
+          </a>
+          <Link to="/inscription" className="navbar__cta">
+            <Button variant="primary" size="sm">
+              S'inscrire
+            </Button>
+          </Link>
         </nav>
 
         <button
@@ -53,18 +77,49 @@ export function Navbar() {
         </button>
       </div>
 
-      <div className={`navbar__overlay${menuOpen ? ' navbar__overlay--open' : ''}`} aria-hidden={!menuOpen}>
+      <div
+        className={`navbar__overlay${menuOpen ? ' navbar__overlay--open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
         <nav className="navbar__overlay-nav">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.label}
-              href={item.href}
-              variant="overlay"
-              onClick={closeMenu}
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `navbar__overlay-link${isActive ? ' navbar__overlay-link--active' : ''}`
+            }
+            onClick={closeMenu}
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/prestations"
+            className={({ isActive }) =>
+              `navbar__overlay-link${isActive ? ' navbar__overlay-link--active' : ''}`
+            }
+            onClick={closeMenu}
+          >
+            Prestations
+          </NavLink>
+          <NavLink
+            to="/inscription"
+            className={({ isActive }) =>
+              `navbar__overlay-link${isActive ? ' navbar__overlay-link--active' : ''}`
+            }
+            onClick={closeMenu}
+          >
+            Tarifs &amp; Inscriptions
+          </NavLink>
+          <a href="/#contact" className="navbar__overlay-link" onClick={closeMenu}>
+            Contact
+          </a>
+          <div className="navbar__overlay-cta">
+            <Link to="/inscription" onClick={closeMenu}>
+              <Button variant="primary" size="md" fullWidth>
+                S'inscrire
+              </Button>
+            </Link>
+          </div>
         </nav>
         <div className="navbar__overlay-footer">
           <span className="navbar__overlay-tagline">Puteaux, Hauts-de-Seine</span>

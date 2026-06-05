@@ -3,6 +3,20 @@
 .pricing {
   background-color: $color-light-bg-primary;
 
+  &__note {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: $font-body;
+    font-size: 0.85rem;
+    margin-top: $space-8;
+    line-height: 1.6;
+
+    &--small {
+      font-size: 0.75rem;
+      margin-top: $space-2;
+    }
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: 1fr;

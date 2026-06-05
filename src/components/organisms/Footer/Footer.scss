@@ -131,6 +131,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
   }
 
@@ -146,5 +147,23 @@
     font-size: 11px;
     color: $color-light-text-muted;
     letter-spacing: 0.06em;
+  }
+
+  &__built {
+    font-family: $font-body;
+    font-size: 11px;
+    color: $color-light-text-muted;
+    letter-spacing: 0.04em;
+  }
+
+  &__built-link,
+  &__srwdev {
+    color: $color-light-text-muted;
+    transition: color $transition-base;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-accent;
+    }
   }
 }

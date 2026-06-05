@@ -3,16 +3,18 @@ import './PricingCard.scss';
 
 interface PricingCardProps {
   title: string;
+  forfaitSlug: string;
   price: string;
   priceNote?: string;
   description: string;
   features: string[];
   recommended?: boolean;
-  onBook: (packageName: string) => void;
+  onBook: (forfaitSlug: string) => void;
 }
 
 export function PricingCard({
   title,
+  forfaitSlug,
   price,
   priceNote,
   description,
@@ -48,7 +50,7 @@ export function PricingCard({
           variant={recommended ? 'primary' : 'outline'}
           size="md"
           fullWidth
-          onClick={() => onBook(title)}
+          onClick={() => onBook(forfaitSlug)}
         >
           Réserver
         </Button>

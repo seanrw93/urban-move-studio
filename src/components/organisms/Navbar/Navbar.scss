@@ -44,11 +44,79 @@
   &__nav {
     display: none;
     align-items: center;
-    gap: $space-8;
+    gap: $space-6;
 
     @include respond-md {
       display: flex;
     }
+  }
+
+  &__nav-link {
+    display: inline-block;
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: $fw-medium;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-text-secondary;
+    transition: color $transition-base;
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: $color-accent;
+      transition: width $transition-base;
+    }
+
+    &:hover {
+      color: $color-text-primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      color: $color-accent;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__cta {
+    margin-left: $space-2;
+    text-decoration: none;
+  }
+
+  &__overlay-link {
+    display: block;
+    font-family: $font-display;
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: $fw-black;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-text-primary;
+    line-height: 1.05;
+    text-decoration: none;
+    transition: color $transition-base;
+
+    &:hover,
+    &--active {
+      color: $color-accent;
+    }
+  }
+
+  &__overlay-cta {
+    margin-top: $space-8;
+    max-width: 280px;
   }
 
   // Hamburger button

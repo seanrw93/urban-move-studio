@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../../atoms/Button/Button';
 import './Hero.scss';
-
-interface HeroProps {
-  onBooking: () => void;
-}
 
 const REEL_IMAGES = [
   { webp: '/hero-bg.webp',      alt: 'Danse hip-hop',          animated: false },
@@ -15,7 +12,7 @@ const REEL_IMAGES = [
 
 const INTERVAL = 3500;
 
-export function Hero({ onBooking }: HeroProps) {
+export function Hero() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -27,7 +24,6 @@ export function Hero({ onBooking }: HeroProps) {
 
   return (
     <section className="hero" id="hero">
-      {/* Image reel — all images stacked, active one fades in */}
       <div className="hero__reel">
         {REEL_IMAGES.map((img, i) => (
           <div
@@ -62,13 +58,19 @@ export function Hero({ onBooking }: HeroProps) {
             Cours de hip-hop & urban dance à Puteaux
           </p>
           <div className="hero__cta">
-            <Button variant="primary" size="lg" onClick={onBooking}>
-              Réserver un cours
-            </Button>
+            <Link to="/prestations">
+              <Button variant="outline" size="lg">
+                Voir les cours
+              </Button>
+            </Link>
+            <Link to="/inscription">
+              <Button variant="primary" size="lg">
+                S'inscrire
+              </Button>
+            </Link>
           </div>
         </div>
 
-        {/* Reel indicator dots */}
         <div className="hero__reel-dots">
           {REEL_IMAGES.map((_, i) => (
             <button

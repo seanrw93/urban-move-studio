@@ -1,0 +1,282 @@
+@use '../../styles/variables' as *;
+
+.prestations-page {
+  background-color: $color-bg-primary;
+  padding-top: $navbar-height;
+}
+
+// ── Page header ──────────────────────────────────────────────────────────────
+
+.prestations__header {
+  padding-top: $space-16;
+  padding-bottom: $space-16;
+
+  @include respond-md {
+    padding-top: $space-20;
+    padding-bottom: $space-20;
+  }
+}
+
+.prestations__back {
+  display: inline-block;
+  font-family: $font-body;
+  font-size: 13px;
+  font-weight: $fw-medium;
+  letter-spacing: 0.06em;
+  color: $color-text-secondary;
+  text-decoration: none;
+  margin-bottom: $space-6;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.prestations__kicker {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+.prestations__heading {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(40px, 7vw, 80px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: $color-text-primary;
+  margin-bottom: $space-6;
+}
+
+.prestations__subheading {
+  font-family: $font-body;
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: $color-text-secondary;
+  line-height: 1.65;
+  max-width: 680px;
+}
+
+// ── Course sections ───────────────────────────────────────────────────────────
+
+.prestations__courses {
+  padding-bottom: $space-20;
+}
+
+.prestations__course {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-10;
+  padding: $space-16 0;
+
+  @include respond-md {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-16;
+    align-items: center;
+  }
+
+  &--reverse {
+    @include respond-md {
+      .prestations__course-image {
+        order: 2;
+      }
+      .prestations__course-content {
+        order: 1;
+      }
+    }
+  }
+}
+
+.prestations__course-image {
+  border-radius: $radius-md;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+  }
+
+  &:hover img {
+    transform: scale(1.03);
+  }
+}
+
+.prestations__course-content {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.prestations__course-kicker {
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-accent;
+}
+
+.prestations__course-name {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: $color-text-primary;
+}
+
+.prestations__course-schedule {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-body;
+  font-size: 13px;
+  color: $color-text-secondary;
+  letter-spacing: 0.04em;
+
+  svg {
+    flex-shrink: 0;
+    color: $color-accent;
+  }
+}
+
+.prestations__course-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.prestations__badge {
+  display: inline-block;
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: $space-1 $space-3;
+  border-radius: $radius-sm;
+
+  &--debutant {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+  }
+
+  &--intermediaire {
+    background-color: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+  }
+
+  &--avance {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+  }
+
+  &--public {
+    background-color: rgba($color-text-secondary, 0.1);
+    color: $color-text-secondary;
+  }
+}
+
+.prestations__course-description {
+  font-family: $font-body;
+  font-size: 15px;
+  color: $color-text-secondary;
+  line-height: 1.7;
+}
+
+.prestations__course-expect {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prestations__course-expect-item {
+  font-family: $font-body;
+  font-size: 14px;
+  color: $color-text-secondary;
+  line-height: 1.5;
+  padding-left: $space-5;
+  position: relative;
+
+  &::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: $color-accent;
+    font-weight: $fw-bold;
+  }
+}
+
+.prestations__course-cta {
+  a {
+    text-decoration: none;
+  }
+}
+
+.prestations__divider {
+  border: none;
+  border-top: 1px solid $color-border;
+}
+
+// ── CTA banner ────────────────────────────────────────────────────────────────
+
+.prestations__cta-banner {
+  background-color: $color-accent;
+  padding: $space-20 $space-5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-5;
+
+  @include respond-md {
+    padding: $space-24 $space-8;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.prestations__cta-banner-heading {
+  font-family: $font-display;
+  font-weight: $fw-black;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: $color-bg-primary;
+}
+
+.prestations__cta-banner-sub {
+  font-family: $font-body;
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: $color-bg-primary;
+  opacity: 0.75;
+}
+
+// Override button inside the yellow banner to invert colours
+.prestations__cta-banner .button--primary {
+  background-color: $color-bg-primary;
+  border-color: $color-bg-primary;
+  color: $color-text-primary;
+
+  &:hover {
+    background-color: $color-bg-secondary;
+    border-color: $color-bg-secondary;
+    box-shadow: none;
+  }
+}

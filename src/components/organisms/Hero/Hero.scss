@@ -115,6 +115,13 @@
 
   &__cta {
     margin-top: $space-4;
+    display: flex;
+    gap: $space-4;
+    flex-wrap: wrap;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   // Indicator dots
