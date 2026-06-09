@@ -53,14 +53,14 @@ export function JotformModal({ isOpen, onClose, selectedCourse, selectedForfait 
         if (e.target === e.currentTarget) onClose();
       }}
       aria-modal="true"
-      aria-label="Fiche d'inscription"
+      aria-labelledby="jotform-modal-title"
       role="dialog"
     >
       <div className="jotform-modal__panel">
         <div className="jotform-modal__top">
           <div className="jotform-modal__top-text">
             <p className="jotform-modal__kicker">Sofia Marchand Studio</p>
-            <h2 className="jotform-modal__title">Fiche d'inscription</h2>
+            <h2 className="jotform-modal__title" id="jotform-modal-title">Fiche d'inscription</h2>
           </div>
           <button
             className="jotform-modal__close"

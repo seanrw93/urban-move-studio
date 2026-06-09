@@ -89,6 +89,13 @@
         width: 100%;
       }
     }
+
+    &--btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
   }
 
   &__cta {
@@ -111,6 +118,15 @@
     &:hover,
     &--active {
       color: $color-accent;
+    }
+
+    &--btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
     }
   }
 

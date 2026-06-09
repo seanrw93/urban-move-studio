@@ -123,7 +123,7 @@ function CourseCard({
   );
 }
 
-export function InscriptionPage() {
+export default function InscriptionPage() {
   const [searchParams] = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<string | undefined>();
@@ -183,7 +183,7 @@ export function InscriptionPage() {
 
   return (
     <>
-      <main className="inscription-page">
+      <div className="inscription-page">
         <div className="inscription__header container" ref={headerRef}>
           <Link to="/" className="inscription__back reveal">
             &larr; Accueil
@@ -286,7 +286,7 @@ export function InscriptionPage() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
       <JotformModal
         isOpen={isModalOpen}

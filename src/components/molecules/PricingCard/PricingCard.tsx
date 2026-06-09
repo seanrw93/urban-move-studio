@@ -40,7 +40,7 @@ export function PricingCard({
       <ul className="pricing-card__features">
         {features.map((f, i) => (
           <li key={i} className="pricing-card__feature">
-            <span className="pricing-card__feature-icon" />
+            <span className="pricing-card__feature-icon" aria-hidden="true" />
             {f}
           </li>
         ))}

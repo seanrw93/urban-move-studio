@@ -173,11 +173,11 @@ function CtaBanner() {
   );
 }
 
-export function PrestationsPage() {
+export default function PrestationsPage() {
   const headerRef = useRevealAnimation<HTMLDivElement>();
 
   return (
-    <main className="prestations-page">
+    <div className="prestations-page">
       <div className="prestations__header container" ref={headerRef}>
         <Link to="/" className="prestations__back reveal">
           &larr; Accueil
@@ -199,6 +199,6 @@ export function PrestationsPage() {
       </div>
 
       <CtaBanner />
-    </main>
+    </div>
   );
 }

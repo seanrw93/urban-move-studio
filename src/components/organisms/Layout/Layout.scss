@@ -1,0 +1,20 @@
+@use '../../../styles/variables' as *;
+
+.layout__skip-link {
+  position: absolute;
+  top: -100%;
+  left: $space-4;
+  z-index: 9999;
+  padding: $space-2 $space-4;
+  background-color: $color-accent;
+  color: $color-bg-primary;
+  font-family: $font-body;
+  font-size: 13px;
+  font-weight: $fw-semibold;
+  text-decoration: none;
+  border-radius: $radius-sm;
+
+  &:focus {
+    top: $space-4;
+  }
+}

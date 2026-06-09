@@ -48,16 +48,16 @@ export function Hero() {
 
       <div className="hero__content container">
         <div className="hero__text-block">
-          <p className="hero__label">Hip-Hop & Urban Dance</p>
+          <p className="hero__label hero__animate hero__animate--1">Hip-Hop & Urban Dance</p>
           <h1 className="hero__headline">
-            <span className="hero__headline-line">Danse.</span>
-            <span className="hero__headline-line hero__headline-line--accent">Évolue.</span>
-            <span className="hero__headline-line">Performe.</span>
+            <span className="hero__headline-line hero__animate hero__animate--2">Danse.</span>
+            <span className="hero__headline-line hero__headline-line--accent hero__animate hero__animate--3">Évolue.</span>
+            <span className="hero__headline-line hero__animate hero__animate--4">Performe.</span>
           </h1>
-          <p className="hero__subheading">
+          <p className="hero__subheading hero__animate hero__animate--5">
             Cours de hip-hop & urban dance à Puteaux
           </p>
-          <div className="hero__cta">
+          <div className="hero__cta hero__animate hero__animate--6">
             <Link to="/prestations">
               <Button variant="outline" size="lg">
                 Voir les cours
@@ -71,7 +71,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero__reel-dots">
+        <div className="hero__reel-dots hero__animate hero__animate--7">
           {REEL_IMAGES.map((_, i) => (
             <button
               key={i}
@@ -83,7 +83,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="hero__scroll-hint">
+      <div className="hero__scroll-hint hero__animate hero__animate--8">
         <span className="hero__scroll-hint-line" />
         <span className="hero__scroll-hint-text">Scroll</span>
       </div>

@@ -22,6 +22,11 @@ export function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const scrollToContact = () => {
+    closeMenu();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
@@ -55,9 +60,9 @@ export function Navbar() {
           >
             Tarifs &amp; Inscriptions
           </NavLink>
-          <a href="/#contact" className="navbar__nav-link">
+          <button onClick={scrollToContact} className="navbar__nav-link navbar__nav-link--btn">
             Contact
-          </a>
+          </button>
           <Link to="/inscription" className="navbar__cta">
             <Button variant="primary" size="sm">
               S'inscrire
@@ -70,6 +75,7 @@ export function Navbar() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={menuOpen}
+          aria-controls="navbar-menu"
         >
           <span className="navbar__burger-line" />
           <span className="navbar__burger-line" />
@@ -78,10 +84,11 @@ export function Navbar() {
       </div>
 
       <div
+        id="navbar-menu"
         className={`navbar__overlay${menuOpen ? ' navbar__overlay--open' : ''}`}
         aria-hidden={!menuOpen}
       >
-        <nav className="navbar__overlay-nav">
+        <nav className="navbar__overlay-nav" aria-label="Navigation mobile">
           <NavLink
             to="/"
             end
@@ -110,9 +117,9 @@ export function Navbar() {
           >
             Tarifs &amp; Inscriptions
           </NavLink>
-          <a href="/#contact" className="navbar__overlay-link" onClick={closeMenu}>
+          <button onClick={scrollToContact} className="navbar__overlay-link navbar__overlay-link--btn">
             Contact
-          </a>
+          </button>
           <div className="navbar__overlay-cta">
             <Link to="/inscription" onClick={closeMenu}>
               <Button variant="primary" size="md" fullWidth>

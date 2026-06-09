@@ -5,10 +5,9 @@ import { About } from '../../components/organisms/About/About';
 import { Pricing } from '../../components/organisms/Pricing/Pricing';
 import { Testimonials } from '../../components/organisms/Testimonials/Testimonials';
 import { Gallery } from '../../components/organisms/Gallery/Gallery';
-import { Contact } from '../../components/organisms/Contact/Contact';
 import { JotformModal } from '../../components/organisms/JotformModal/JotformModal';
 
-export function HomePage() {
+export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedForfait, setSelectedForfait] = useState<string | undefined>();
 
@@ -18,14 +17,13 @@ export function HomePage() {
   };
 
   return (
-    <main>
+    <>
       <Hero />
       <HowItWorks />
       <About />
       <Pricing onReserver={handleReserver} />
       <Testimonials />
       <Gallery />
-      <Contact />
       <JotformModal
         isOpen={isModalOpen}
         onClose={() => {
@@ -34,6 +32,6 @@ export function HomePage() {
         }}
         selectedForfait={selectedForfait}
       />
-    </main>
+    </>
   );
 }
